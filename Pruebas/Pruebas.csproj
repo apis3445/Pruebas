@@ -4,7 +4,33 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'UnitTesting' ">
+    <StartAction>Project</StartAction>
+    <EnvironmentVariables>
+      <Variable name="ASPNETCORE_ENVIRONMENT" value="UnitTesting" />
+    </EnvironmentVariables>
+    <LaunchUrl>weatherforecast</LaunchUrl>
+    <ApplicationURL>https://localhost:5001;http://localhost:5000</ApplicationURL>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'IntegrationTesting' ">
+    <StartAction>Project</StartAction>
+    <EnvironmentVariables>
+      <Variable name="ASPNETCORE_ENVIRONMENT" value="IntegrationTesting" />
+    </EnvironmentVariables>
+    <LaunchUrl>weatherforecast</LaunchUrl>
+    <ApplicationURL>https://localhost:5001;http://localhost:5000</ApplicationURL>
+  </PropertyGroup>
   <ItemGroup>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Modelos\" />
+    <Folder Include="DAO\" />
+    <Folder Include="Datos\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.0.1" />
+  </ItemGroup>
 </Project>
