@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Pruebas.Modelos;
 
@@ -11,6 +12,16 @@ public class AutorDAO
     public AutorDAO(CursosContext contexto)
     {
         this.contexto = contexto;
+    }
+
+    public IEnumerable<Autor> ObtenerTodos()
+    {
+        return contexto.Autores.ToList();
+    }
+
+    public Autor ObtenerPorId(int id)
+    {
+        return contexto.Autores.Find(id);
     }
 
     public bool EsClaveRepetida(int id, int clave)

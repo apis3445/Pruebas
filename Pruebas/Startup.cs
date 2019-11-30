@@ -22,10 +22,7 @@ namespace Pruebas
         public IConfiguration Configuration { get; }
         public IWebHostEnvironment CurrentEnvironment { get; }
 
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+
         public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             Configuration = configuration;
@@ -36,7 +33,7 @@ namespace Pruebas
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers();   
             switch (CurrentEnvironment.EnvironmentName)
             {
                 case "UnitTesting":
